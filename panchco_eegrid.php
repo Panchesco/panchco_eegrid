@@ -30,11 +30,45 @@ class Panchco_eegrid	{
 						{
 							return $query->row()->field_id;
 						} else {
-							return false;
+							return FALSE;
 						}
 				 }
 					
-				//-----------------------------------------------------------------------------				
+				//-----------------------------------------------------------------------------	
+							
+				 /**
+				 *	Get data for a grid column row.
+				 *	@param $col_name string
+				 *	@return mixed object/boolean
+				 */
+				 public function grid_column($col_name)
+				 {
+						ee()->db->where('col_name',$col_name);
+						$query	= ee()->db->get('grid_columns');	
+					 return $query->row();						
+				 }
+					
+				//-----------------------------------------------------------------------------	
+				 
+				 /**
+				 *	Get data table name for a grid field.
+				 *	@param $field_name string
+				 *	@return mixed string/boolean
+				 */
+				 public function get_field_data_table($field_name)
+				 {
+					 $field_id	= $this->get_field_id($field_name);
+				 	
+				 	if($field_id)
+				 	{
+					 	return 'channel_grid_field_' . $field_id;
+				 	} else {
+					 	return FALSE;
+				 	}
+						
+				 }
+					
+				//-----------------------------------------------------------------------------			
 				
 				/**
 				 *	Get array of grid column field types with column indentifiers as index.
@@ -229,6 +263,6 @@ class Panchco_eegrid	{
 				 //----------------------------------------------------------------------------- 
  }
 
-// END CLASS
+// END CLASS ;
 
 /* End of file panchco_eegrid.php */
