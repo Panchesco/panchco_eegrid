@@ -4,11 +4,7 @@
 class Panchco_eegrid	{
 
 
-				function __construct(){
-					
-					$this->grid_field_types('team_grid');
-					
-				}
+				function __construct(){}
 					
 				//-----------------------------------------------------------------------------	
 				
