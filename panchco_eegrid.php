@@ -257,6 +257,34 @@ class Panchco_eegrid	{
 				 }
 				 
 				 //----------------------------------------------------------------------------- 
+				 
+				 /**
+					 * Return array of custom field_id = field_name;
+					 * @return array
+					 */
+					 public function custom_field_pairs()
+					 {
+						 $data		= array();
+						 $select[]	= "CONCAT('field_id_',field_id) AS field_id";
+						 $select[]	= "field_name";
+						 
+						 ee()->db->select($select);
+						 ee()->db->order_by('field_name');
+						 $query = ee()->db->get('channel_fields');
+						 $result	= $query->result();
+						 
+						 foreach($result as $key=>$row)
+						 {
+							$data[$row->field_id]	= $row->field_name; 
+						 }
+						 
+						 return $data;
+					 }
+				 
+				 
+				 //-----------------------------------------------------------------------------
+				 
+				 
  }
 
 // END CLASS ;
