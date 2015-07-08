@@ -1,2 +1,2 @@
 # panchco_eegrid
-Library for working with data saved to an EE2 Grid field
+Library of functions for accessing data saved to an EE2 Grid field
